@@ -9,8 +9,9 @@ const GitHub = () => {
   };
   return (
     <div>
-      <a href="https://github.com/vikbert/react-MIT-todo" target="_blank" rel="noopener noreferrer" style={avatarStyle}>
+      <a href="https://github.com/vikbert/react-MIT-todo" target="_blank" rel="noopener noreferrer">
         <img className="avatar"
+             style={avatarStyle}
              src="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png"
              alt="avatar"/>
       </a>
