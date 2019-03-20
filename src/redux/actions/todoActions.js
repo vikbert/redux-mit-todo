@@ -1,45 +1,29 @@
 import * as types from './types';
 
-export const fetchTodos = () => dispatch => {
-  dispatch({
-    type: types.FETCH_TODOS,
-  });
-};
+export const fetchTodos = () => ({
+  type: types.FETCH_TODOS,
+});
 
-export const createTodo = (todo) => dispatch => {
-  dispatch({
-    type: types.CREATE_TODO,
-    todo: todo,
-  });
-};
+export const createTodo = (todo) => ({
+  type: types.CREATE_TODO,
+  todo,
+});
 
-export const updateTodo = (newTodo, oldTodo) => dispatch => {
-  dispatch({
-    type: types.UPDATE_TODO,
-    newTodo: newTodo,
-    oldTodo: oldTodo,
-  });
-};
+export const updateTodo = (newTodo, oldTodo) => ({
+  type: types.UPDATE_TODO,
+  newTodo,
+  oldTodo,
+});
 
-export const deleteTodo = (id) => dispatch => {
-  dispatch({
-    type: types.DELETE_TODO,
-    id: id
-  });
-};
+export const deleteTodo = (id) => ({
+  type: types.DELETE_TODO,
+  id,
+});
+export const removeCompletedTodos = () => ({
+  type: types.REMOVE_COMPLETED_TODOS,
+});
 
-export const removeCompletedTodos = () => dispatch => {
-  dispatch({
-    type: types.REMOVE_COMPLETED_TODOS,
-  });
-};
-
-
-export const updateVisibility = (visibility) => dispatch => {
-  dispatch({
-    type: types.UPDATE_VISIBILITY,
-    visibility,
-  });
-};
-
-
+export const updateVisibility = (visibility) => ({
+  type: types.UPDATE_VISIBILITY,
+  visibility,
+});
