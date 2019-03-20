@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {updateTodo} from "../redux/actions/todoActions";
+import {update} from "../redux/actions/todoActions";
 
 class TodoStarIcon extends Component {
   state = {
@@ -39,4 +39,4 @@ TodoStarIcon.propTypes = {
   updateTodo: PropTypes.func.isRequired,
 };
 
-export default connect(null, {updateTodo})(TodoStarIcon);
+export default connect(null, {updateTodo: update})(TodoStarIcon);

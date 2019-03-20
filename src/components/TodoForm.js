@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {createTodo} from "../redux/actions/todoActions";
+import {add} from "../redux/actions/todoActions";
 import PropTypes from 'prop-types';
 
 class TodoForm extends Component {
@@ -45,4 +45,4 @@ TodoForm.propTypes = {
 };
 
 
-export default connect(null, {createTodo})(TodoForm);
+export default connect(null, {createTodo: add})(TodoForm);

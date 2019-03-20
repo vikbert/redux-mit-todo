@@ -4,22 +4,22 @@ export const fetchTodos = () => ({
   type: types.FETCH_TODOS,
 });
 
-export const createTodo = (todo) => ({
+export const add = (todo) => ({
   type: types.CREATE_TODO,
   todo,
 });
 
-export const updateTodo = (newTodo, oldTodo) => ({
+export const update = (newTodo, oldTodo) => ({
   type: types.UPDATE_TODO,
   newTodo,
   oldTodo,
 });
 
-export const deleteTodo = (id) => ({
+export const remove = (id) => ({
   type: types.DELETE_TODO,
   id,
 });
-export const removeCompletedTodos = () => ({
+export const removeCompleted = () => ({
   type: types.REMOVE_COMPLETED_TODOS,
 });
 

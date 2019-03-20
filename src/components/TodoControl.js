@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import * as Filter from './FilterConfig';
+import * as Filter from '../constants/Filter';
 import {connect} from 'react-redux';
-import {removeCompletedTodos, updateVisibility} from "../redux/actions/todoActions";
+import {removeCompleted, updateVisibility} from "../redux/actions/todoActions";
 import PropTypes from 'prop-types';
 
 class TodoControl extends Component {
@@ -18,7 +18,7 @@ class TodoControl extends Component {
     return (
       <div>
         <span className="todo-count">
-          <strong>{this.props.getActiveTodos().length}</strong> items left
+          <strong>{this.props.counterActive}</strong> items left
         </span>
         <ul className="filters">
           <li>
@@ -60,4 +60,4 @@ const mapStateToProps = state => ({
   visibility: state.todoApp.visibility,
 });
 
-export default connect(mapStateToProps, {updateVisibility, removeCompletedTodos})(TodoControl);
+export default connect(mapStateToProps, {updateVisibility, removeCompletedTodos: removeCompleted})(TodoControl);

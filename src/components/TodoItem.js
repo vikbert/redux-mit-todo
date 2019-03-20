@@ -4,7 +4,7 @@ import TodoStarIcon from './TodoStarIcon';
 import TodoTextInput from './TodoTextInput';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {updateTodo, deleteTodo} from "../redux/actions/todoActions";
+import {update, remove} from "../redux/actions/todoActions";
 
 class TodoItem extends Component {
   state = {
@@ -73,4 +73,4 @@ TodoItem.propTypes = {
   deleteTodo: PropTypes.func.isRequired,
 };
 
-export default connect(null, {updateTodo, deleteTodo})(TodoItem);
+export default connect(null, {updateTodo: update, deleteTodo: remove})(TodoItem);
