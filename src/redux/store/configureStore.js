@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
-import configureEnhancer from '../containers/configureEnhancer';
+import configureEnhancer from './configureEnhancer';
 import rootReducer from '../reducers/index';
 
 export default function configureStore() {
