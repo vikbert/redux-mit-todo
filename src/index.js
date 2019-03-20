@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Provider as ReduxProvider} from 'react-redux';
+import {Provider} from 'react-redux';
 import configureStore from './redux/store/configureStore';
+import './view/css/index.css'
 
 const STORAGE_KEY = 'REACT_APP_TODO_LIST';
 window.todoStorage = {
@@ -38,13 +38,13 @@ window.todoStorage = {
 
 const store = configureStore();
 ReactDOM.render(
-  <ReduxProvider store={store}>
+  <Provider store={store}>
     <App/>
-  </ReduxProvider>,
+  </Provider>,
   document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();

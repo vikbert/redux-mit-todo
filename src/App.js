@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import "./App.css";
 import * as FilterConfig from "./components/FilterConfig";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 import TodoControl from "./components/TodoControl";
-import { fetchTodos } from "./redux/actions/todoActions";
+import {fetchTodos} from "./redux/actions/todoActions";
 import GitHub from './components/Github';
+import "./view/css/App.css";
 
 class App extends Component {
   componentWillMount() {
@@ -39,7 +39,7 @@ class App extends Component {
 
   getActiveTodos = () => {
     const activeTodos = this.props.todos.filter(
-      todo => todo.completed === false
+      todo => todo.completed === false,
     );
 
     return activeTodos.sort((a, b) => b.starred - a.starred);
@@ -67,7 +67,7 @@ class App extends Component {
           <header className="header">
             <h1>{"M I T Todo"}</h1>
             {this.props.visibility !== FilterConfig.VISIBILITY_COMPLETED && (
-              <TodoForm />
+              <TodoForm/>
             )}
           </header>
 
@@ -101,12 +101,12 @@ class App extends Component {
 App.propTypes = {
   todos: PropTypes.array.isRequired,
   visibility: PropTypes.string.isRequired,
-  fetchTodos: PropTypes.func.isRequired
+  fetchTodos: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   todos: state.todoApp.todos,
-  visibility: state.todoApp.visibility
+  visibility: state.todoApp.visibility,
 });
 
 export default connect(mapStateToProps, {fetchTodos})(App);
