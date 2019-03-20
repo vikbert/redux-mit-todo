@@ -8,14 +8,12 @@ const GitHub = () => {
     width: '48px',
   };
   return (
-    <div>
-      <a href="https://github.com/vikbert/react-MIT-todo" target="_blank" rel="noopener noreferrer">
-        <img className="avatar"
-             style={avatarStyle}
-             src="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png"
-             alt="avatar"/>
-      </a>
-    </div>
+    <a href="https://github.com/vikbert/react-MIT-todo" target="_blank" rel="noopener noreferrer">
+      <img className="avatar"
+           style={avatarStyle}
+           src="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png"
+           alt="avatar"/>
+    </a>
   );
 };
 
