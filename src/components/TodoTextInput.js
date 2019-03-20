@@ -9,7 +9,7 @@ class TodoTextInput extends Component {
   };
 
   handleBlur = () => {
-    this.props.handleSave(this.state.text);
+    this.props.handleInputFieldUpdate(this.state.text);
   };
 
   handleSubmit = (e) => {
@@ -33,8 +33,9 @@ class TodoTextInput extends Component {
 }
 
 TodoTextInput.propTypes = {
-  handleSave: PropTypes.func,
+  handleInputFieldUpdate: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   editing: PropTypes.bool.isRequired,
 };
+
 export default TodoTextInput;

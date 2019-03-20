@@ -1,10 +1,10 @@
 import React, {Component} from "react";
+import classnames from 'classnames';
 import TodoStarIcon from './TodoStarIcon';
 import TodoTextInput from './TodoTextInput';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {updateTodo, deleteTodo} from "../redux/actions/todoActions";
-import classnames from 'classnames';
 
 class TodoItem extends Component {
   state = {
@@ -23,16 +23,16 @@ class TodoItem extends Component {
     this.props.updateTodo(newTodo, this.props.todo);
   };
 
-  handleDoubleClick = e => {
+  handleDoubleClick = () => {
     this.setState({
       editing: true,
     });
   };
 
-  handleSave = (text) => {
+  handleInputFieldUpdate = (text) => {
     if (text.length === 0) {
       this.props.deleteTodo(this.props.todo.id);
-    } else {
+    } else if (text !== this.props.todo.title) {
       const newTodo = {...this.props.todo, title: text};
       this.props.updateTodo(newTodo, this.props.todo);
     }
@@ -46,7 +46,7 @@ class TodoItem extends Component {
       itemView = (
         <TodoTextInput editing={this.state.editing}
                        text={this.props.todo.title}
-                       handleSave={this.handleSave}/>
+                       handleInputFieldUpdate={this.handleInputFieldUpdate}/>
       );
     } else {
       itemView = (
