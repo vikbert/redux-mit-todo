@@ -12,6 +12,7 @@ const mapDispatchToProps = {
   updateVisibility,
   removeCompletedTodos: removeCompleted,
 };
+
 const TodoControlComponent = connect(mapStateToProps, mapDispatchToProps)(TodoControl);
 
 export default TodoControlComponent;

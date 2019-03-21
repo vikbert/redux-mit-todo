@@ -1,9 +1,5 @@
 import * as types from './types';
 
-export const fetchTodos = () => ({
-  type: types.FETCH_TODOS,
-});
-
 export const add = (todo) => ({
   type: types.CREATE_TODO,
   todo,
