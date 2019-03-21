@@ -5,16 +5,16 @@ class TodoTextInput extends Component {
   state = {text: this.props.text || ''};
 
   handleChange = e => {
-    this.setState({text: e.target.value.trim()});
+    this.setState({text: e.target.value});
   };
 
   handleBlur = () => {
-    this.props.handleInputFieldUpdate(this.state.text);
+    this.props.handleInputFieldUpdate(this.state.text.trim());
   };
 
   handleSubmit = (e) => {
     if (e.key === 'Enter') {
-      this.props.handleInputFieldUpdate(this.state.text);
+      this.props.handleInputFieldUpdate(this.state.text.trim());
     }
   };
 
