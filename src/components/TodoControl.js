@@ -1,34 +1,21 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import * as Filter from '../constants/Filter';
+import TodoFilterLink from '../redux/containers/TodoFilterLink';
 
 const TodoControl = ({visibility, counterActive, updateVisibility, removeCompletedTodos}) => {
-  const handleClick = e => updateVisibility(e.target.getAttribute('data-visibility'));
+  const filters = ['all', 'active', 'completed'];
 
   return (
     <div>
-        <span className="todo-count">
-          <strong>{counterActive}</strong> items left
-        </span>
+      <span className="todo-count">
+        <strong>{counterActive}</strong> items left
+      </span>
       <ul className="filters">
-        <li>
-          <a href="#/all"
-             data-visibility={Filter.VISIBILITY_ALL}
-             className={visibility === Filter.VISIBILITY_ALL ? "selected" : ""}
-             onClick={e => handleClick(e)}>All</a>
-        </li>
-        <li>
-          <a href="#/all"
-             data-visibility={Filter.VISIBILITY_ACTIVE}
-             className={visibility === Filter.VISIBILITY_ACTIVE ? "selected" : ""}
-             onClick={e => handleClick(e)}>Active</a>
-        </li>
-        <li>
-          <a href="#/all"
-             data-visibility={Filter.VISIBILITY_COMPLETED}
-             className={visibility === Filter.VISIBILITY_COMPLETED ? "selected" : ""}
-             onClick={e => handleClick(e)}>Completed</a>
-        </li>
+        {filters.map(filter =>
+          <li key={filter}>
+            <TodoFilterLink filterValue={filter}/>
+          </li>,
+        )}
       </ul>
       <button className="clear-completed" onClick={removeCompletedTodos}>Clear completed</button>
     </div>
