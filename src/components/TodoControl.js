@@ -1,19 +1,23 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import TodoFilterLink from '../redux/containers/TodoFilterLink';
+import TodoFilterLink from '../components/TodoFilterLink';
 
-const TodoControl = ({visibility, counterActive, updateVisibility, removeCompletedTodos}) => {
+const TodoControl = ({visibility, filterCounter, updateVisibility, removeCompletedTodos}) => {
   const filters = ['all', 'active', 'completed'];
 
   return (
     <div>
       <span className="todo-count">
-        <strong>{counterActive}</strong> items left
+        <strong>{filterCounter[visibility]}</strong> items left
       </span>
       <ul className="filters">
         {filters.map(filter =>
           <li key={filter}>
-            <TodoFilterLink filterValue={filter}/>
+            <TodoFilterLink
+              filterValue={filter}
+              filterCounter={filterCounter}
+              visibility={visibility}
+              updateVisibility={updateVisibility}/>
           </li>,
         )}
       </ul>
@@ -24,7 +28,7 @@ const TodoControl = ({visibility, counterActive, updateVisibility, removeComplet
 
 TodoControl.propTypes = {
   visibility: PropTypes.string.isRequired,
-  counterActive: PropTypes.number.isRequired,
+  filterCounter: PropTypes.object.isRequired,
   updateVisibility: PropTypes.func.isRequired,
   removeCompletedTodos: PropTypes.func.isRequired,
 };

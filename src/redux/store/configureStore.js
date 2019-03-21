@@ -1,6 +1,7 @@
 import {createStore} from 'redux';
 import configureEnhancer from './configureEnhancer';
 import rootReducer from '../reducers/index';
+import * as Filters from '../../constants/Filter'
 
 export default function configureStore() {
   const enhancer = configureEnhancer();
@@ -8,7 +9,7 @@ export default function configureStore() {
     todoApp: {
       todos: window.todoStorage.fetch() || [],
       todosChanged: false,
-      visibility: 'all',
+      visibility: Filters.VISIBILITY_ALL,
     },
   };
 

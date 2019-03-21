@@ -6,6 +6,7 @@ import * as CounterSelector from '../selectors/counterSelector';
 const mapStateToProps = state => ({
   visibility: state.todoApp.visibility,
   counterActive: CounterSelector.countActive(state),
+  filterCounter: CounterSelector.countByFilterValue(state),
 });
 
 const mapDispatchToProps = {

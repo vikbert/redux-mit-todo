@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect';
-import * as Filter from '../../constants/Filter';
+import {firstBy} from 'thenby'
+import * as Filters from '../../constants/Filter';
 
 const getTodos = state => state.todoApp.todos;
 const getVisibility = state => state.todoApp.visibility;
@@ -7,11 +8,14 @@ const getVisibility = state => state.todoApp.visibility;
 export const getFilteredTodos = createSelector(
   [getTodos, getVisibility],
   (todos, visibility) => {
+    const starredFirst = (a, b) => b.starred - a.starred;
     switch (visibility) {
-      case Filter.VISIBILITY_ACTIVE:
-        return todos.filter(t => !t.completed);
-      case Filter.VISIBILITY_COMPLETED:
-        return todos.filter(t => t.completed);
+      case Filters.VISIBILITY_ACTIVE:
+        return todos.filter(t => !t.completed).sort(firstBy(starredFirst));
+      case Filters.VISIBILITY_COMPLETED:
+        return todos.filter(t => t.completed).sort(firstBy(starredFirst));
+      case Filters.VISIBILITY_ALL:
+        return todos.sort(firstBy('completed').thenBy(starredFirst));
       default:
         return todos;
     }
