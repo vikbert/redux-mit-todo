@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import classnames from 'classnames';
-import TodoStarIcon from './TodoStarIcon';
-import TodoTextInput from './TodoTextInput';
 import PropTypes from 'prop-types';
+import TodoTextInput from './TodoTextInput';
+import TodoStarIcon from '../redux/containers/TodoStarIcon'
 
 class TodoItem extends Component {
   state = {
@@ -67,8 +67,7 @@ class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
-  editing: PropTypes.bool.isRequired,
-  completed: PropTypes.bool.isRequired,
+  todo: PropTypes.object.isRequired,
   updateTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
 };

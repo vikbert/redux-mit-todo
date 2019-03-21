@@ -22,9 +22,7 @@ class App extends Component {
           </header>
           <section className="main">
             <ul className="todo-list">
-              {this.props.todos.map((todo, index) =>
-                  <TodoItem key={todo.id} index={index} todo={todo}/>
-              )}
+              {this.props.todos.map(todo => <TodoItem key={todo.id} todo={todo}/>)}
             </ul>
           </section>
           <footer className="footer">
