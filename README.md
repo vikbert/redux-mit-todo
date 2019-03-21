@@ -17,8 +17,14 @@ possible. Keep this list separate from your general to-do list. Read more about 
 **Example Todos**
 ![homepage](./public/screenshot_todo.png)
 
-**Communication between react components**
-![homepage](./public/screenshot_react_delegation.png)
+
+
+**Redux Concept**
+![redux-concept](./public/screenshot_redux.png)
+
+
+**Traditional React Concept**
+![react-concept](./public/screenshot_react_delegation.png)
 
 
 
