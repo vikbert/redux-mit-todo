@@ -1,12 +1,12 @@
 # M.I.T Todo App
 
-[Demo App in react.js](https://mit-todo-redux.netlify.com/)
+[Demo App in react + redux](https://mit-todo-redux.netlify.com/)
 
 This Todo Demo App implemented with `react+redux`.
 
-I have also the other implementations:
+I have also implemented the Todo App with `vue,js` and `react.js`, but without redux support:
 - [Demo Todo in Vue.js](https://mit-todo.netlify.com/)
-- [Demo Todo in react.js](https://mit-todo-react.netlify.com/)
+- [Demo Todo in react.js without Redux](https://mit-todo-react.netlify.com/)
 
 ## What is `MITs`
 Never feel overwhelmed at work again- the M.I.T. technique. A `Most Important Task (MIT)` is a 

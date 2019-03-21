@@ -8,7 +8,7 @@ const GitHub = () => {
     width: '48px',
   };
   return (
-    <a href="https://github.com/vikbert/react-MIT-todo" target="_blank" rel="noopener noreferrer">
+    <a href="https://github.com/vikbert/redux-MIT-todo" target="_blank" rel="noopener noreferrer">
       <img className="avatar"
            style={avatarStyle}
            src="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png"
