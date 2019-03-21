@@ -4,7 +4,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import configureStore from './redux/store/configureStore';
-import './view/css/index.css'
 
 const STORAGE_KEY = 'REACT_APP_TODO_LIST';
 window.todoStorage = {
