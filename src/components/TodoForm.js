@@ -31,18 +31,21 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <input className="new-todo" type="text" placeholder="What needs to be done?"
-             value={this.state.inputText}
-             onChange={this.handleChange}
-             onKeyPress={this.handleKeyPress}
-             autoFocus={true}/>
+      <div>
+        <h1>{"M I T Todo"}</h1>
+        <input className="new-todo" type="text" placeholder="What needs to be done?"
+               value={this.state.inputText}
+               onChange={this.handleChange}
+               onKeyPress={this.handleKeyPress}
+               autoFocus={true}/>
+      </div>
     );
   }
 }
 
 TodoForm.propTypes = {
-    inputText: PropTypes.string,
+  inputText: PropTypes.string,
+  createTodo: PropTypes.func.isRequired,
 };
-
 
 export default connect(null, {createTodo: add})(TodoForm);
