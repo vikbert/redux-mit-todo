@@ -1,34 +1,25 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import * as Filter from "./constants/Filter";
+
+import GitHub from './components/Github';
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 import TodoControl from "./components/TodoControl";
 import {fetchTodos} from "./redux/actions/todoActions";
-import {getFilteredTodos} from './redux/selectors/listSelector';
-import {countActive, countActiveStarred, countCompleted} from './redux/selectors/counterSelector';
-
-import GitHub from './components/Github';
+import * as ListSelector from './redux/selectors/listSelector';
+import * as CounterSelector from './redux/selectors/counterSelector';
 import "./view/css/App.css";
 
 class App extends Component {
-  componentWillMount() {
-    this.props.fetchTodos();
-  }
-
   render() {
     return (
       <div>
         <GitHub/>
         <section className="todoapp">
           <header className="header">
-            <h1>{"M I T Todo"}</h1>
-            {this.props.visibility !== Filter.VISIBILITY_COMPLETED && (
-              <TodoForm/>
-            )}
+            <TodoForm/>
           </header>
-
           <section className="main">
             <ul className="todo-list">
               {this.props.todos.map((todo, index) => {
@@ -66,11 +57,11 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  todos: getFilteredTodos(state),
+  todos: ListSelector.getFilteredTodos(state),
   visibility: state.todoApp.visibility,
-  counterActive: countActive(state),
-  counterCompleted: countCompleted(state),
-  counterActiveStarred: countActiveStarred(state),
+  counterActive: CounterSelector.countActive(state),
+  counterCompleted: CounterSelector.countCompleted(state),
+  counterActiveStarred: CounterSelector.countActiveStarred(state),
 });
 
 export default connect(mapStateToProps, {fetchTodos})(App);
