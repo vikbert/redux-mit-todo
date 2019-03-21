@@ -2,9 +2,7 @@ import React, {Component} from "react";
 import classnames from 'classnames';
 import TodoStarIcon from './TodoStarIcon';
 import TodoTextInput from './TodoTextInput';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {update, remove} from "../redux/actions/todoActions";
 
 class TodoItem extends Component {
   state = {
@@ -69,8 +67,10 @@ class TodoItem extends Component {
 }
 
 TodoItem.propTypes = {
+  editing: PropTypes.bool.isRequired,
+  completed: PropTypes.bool.isRequired,
   updateTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
 };
 
-export default connect(null, {updateTodo: update, deleteTodo: remove})(TodoItem);
+export default TodoItem;

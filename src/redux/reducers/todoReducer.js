@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
     case types.DELETE_TODO:
       return {...state, todos: deleteTodo(state, action), todosChanged: true};
     case types.REMOVE_COMPLETED_TODOS:
-      return {...state, todos: removeCompletedTodos(state), todosChanged: true};
+      return {...state, todos: removeCompletedTodos(state), todosChanged: true, visibility: 'all'};
     case types.UPDATE_VISIBILITY:
       return {...state, visibility: action.visibility, todosChanged: false};
     default:

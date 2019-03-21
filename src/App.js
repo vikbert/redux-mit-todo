@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 import GitHub from './components/Github';
-import TodoForm from "./components/TodoForm";
-import TodoItem from "./components/TodoItem";
-import TodoControl from "./components/TodoControl";
+import TodoForm from "./redux/containers/TodoForm";
+import TodoControl from "./redux/containers/TodoControl";
+import TodoItem from "./redux/containers/TodoItem";
 import {fetchTodos} from "./redux/actions/todoActions";
 import * as ListSelector from './redux/selectors/listSelector';
 import * as CounterSelector from './redux/selectors/counterSelector';
@@ -22,23 +22,13 @@ class App extends Component {
           </header>
           <section className="main">
             <ul className="todo-list">
-              {this.props.todos.map((todo, index) => {
-                return (
-                  <TodoItem
-                    key={todo.id}
-                    index={index}
-                    todo={todo}
-                    counterActiveStarred={this.props.counterActiveStarred}
-                  />
-                );
-              })}
+              {this.props.todos.map((todo, index) =>
+                  <TodoItem key={todo.id} index={index} todo={todo}/>
+              )}
             </ul>
           </section>
           <footer className="footer">
-            <TodoControl
-              counterCompleted={this.props.counterCompleted}
-              counterActive={this.props.counterActive}
-            />
+            <TodoControl/>
           </footer>
         </section>
         <span>{"CSS template powered by todomvc.com®"}</span>

@@ -1,63 +1,45 @@
-import React, {Component} from "react";
-import * as Filter from '../constants/Filter';
-import {connect} from 'react-redux';
-import {removeCompleted, updateVisibility} from "../redux/actions/todoActions";
+import React from "react";
 import PropTypes from 'prop-types';
+import * as Filter from '../constants/Filter';
 
-class TodoControl extends Component {
-  handleClick = event => {
-    this.props.updateVisibility(event.target.getAttribute('data-visibility'));
-  };
+const TodoControl = ({visibility, counterActive, updateVisibility, removeCompletedTodos}) => {
+  const handleClick = e => updateVisibility(e.target.getAttribute('data-visibility'));
 
-  removeCompletedTodos = () => {
-    this.props.removeCompletedTodos();
-    this.props.updateVisibility('all');
-  };
-
-  render() {
-    return (
-      <div>
+  return (
+    <div>
         <span className="todo-count">
-          <strong>{this.props.counterActive}</strong> items left
+          <strong>{counterActive}</strong> items left
         </span>
-        <ul className="filters">
-          <li>
-            <a href="#/all"
-               data-visibility={Filter.VISIBILITY_ALL}
-               className={this.props.visibility === Filter.VISIBILITY_ALL ? "selected" : ""}
-               onClick={this.handleClick}>All</a>
-          </li>
-          {this.props.counterCompleted > 0 &&
-          <li>
-            <a href="#/all"
-               data-visibility={Filter.VISIBILITY_ACTIVE}
-               className={this.props.visibility === Filter.VISIBILITY_ACTIVE ? "selected" : ""}
-               onClick={this.handleClick}>Active</a>
-          </li>
-          }
-          {this.props.counterCompleted > 0 &&
-          <li>
-            <a href="#/all"
-               data-visibility={Filter.VISIBILITY_COMPLETED}
-               className={this.props.visibility === Filter.VISIBILITY_COMPLETED ? "selected" : ""}
-               onClick={this.handleClick}>Completed</a>
-          </li>
-          }
-        </ul>
-        <button className="clear-completed" onClick={this.removeCompletedTodos}>Clear completed</button>
-      </div>
-    );
-  };
-}
+      <ul className="filters">
+        <li>
+          <a href="#/all"
+             data-visibility={Filter.VISIBILITY_ALL}
+             className={visibility === Filter.VISIBILITY_ALL ? "selected" : ""}
+             onClick={e => handleClick(e)}>All</a>
+        </li>
+        <li>
+          <a href="#/all"
+             data-visibility={Filter.VISIBILITY_ACTIVE}
+             className={visibility === Filter.VISIBILITY_ACTIVE ? "selected" : ""}
+             onClick={e => handleClick(e)}>Active</a>
+        </li>
+        <li>
+          <a href="#/all"
+             data-visibility={Filter.VISIBILITY_COMPLETED}
+             className={visibility === Filter.VISIBILITY_COMPLETED ? "selected" : ""}
+             onClick={e => handleClick(e)}>Completed</a>
+        </li>
+      </ul>
+      <button className="clear-completed" onClick={removeCompletedTodos}>Clear completed</button>
+    </div>
+  );
+};
 
 TodoControl.propTypes = {
   visibility: PropTypes.string.isRequired,
+  counterActive: PropTypes.number.isRequired,
   updateVisibility: PropTypes.func.isRequired,
   removeCompletedTodos: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  visibility: state.todoApp.visibility,
-});
-
-export default connect(mapStateToProps, {updateVisibility, removeCompletedTodos: removeCompleted})(TodoControl);
+export default TodoControl;
