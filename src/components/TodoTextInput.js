@@ -14,7 +14,7 @@ class TodoTextInput extends Component {
 
   handleSubmit = (e) => {
     if (e.key === 'Enter') {
-      this.props.handleSave(this.state.text);
+      this.props.handleInputFieldUpdate(this.state.text);
     }
   };
 
