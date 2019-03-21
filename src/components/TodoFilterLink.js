@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TodoFilterLink = ({visibility, filterValue, updateVisibility}) => {
-  const handleClick = e => updateVisibility(e.target.getAttribute('data-visibility'));
+  const className = visibility === filterValue ? 'selected' : '';
 
   return (
-    <a href={'#/' + visibility}
-       data-visibility={filterValue}
-       className={visibility === filterValue ? 'selected' : ''}
-       onClick={e => handleClick(e)}>
+    <a href={'#/' + filterValue} className={className} onClick={() => updateVisibility(filterValue)}>
       {filterValue}
     </a>
   );
