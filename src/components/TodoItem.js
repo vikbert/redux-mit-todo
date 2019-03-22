@@ -28,7 +28,7 @@ class TodoItem extends Component {
     });
   };
 
-  handleToggleItemStarStatus = (starred) => {
+  handleToggleItemStarState = (starred) => {
     this.setState({
       starred: starred,
     });
@@ -61,7 +61,7 @@ class TodoItem extends Component {
                  defaultChecked={this.state.completed}
           />
           <label onDoubleClick={this.handleDoubleClick}>{this.props.todo.title}</label>
-          <TodoStarIcon todo={this.props.todo} toggleItemStarStatus={this.handleToggleItemStarStatus}/>
+          <TodoStarIcon todo={this.props.todo} toggleItemStarState={this.handleToggleItemStarState}/>
         </div>
       );
     }
