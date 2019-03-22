@@ -12,6 +12,7 @@ class TodoStarIcon extends Component {
     this.props.todo.starred = +!original.starred;
     this.props.updateTodo(this.props.todo, original);
 
+    this.props.toggleItemStarStatus(this.props.todo.starred);
     this.setState({
       iconStarred: this.props.todo.starred,
     });
@@ -35,6 +36,7 @@ class TodoStarIcon extends Component {
 
 TodoStarIcon.propTypes = {
   todo: PropTypes.object.isRequired,
+  toggleItemStarStatus: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
 };
 
