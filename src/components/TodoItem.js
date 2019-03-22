@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import TodoTextInput from './TodoTextInput';
-import TodoStarIcon from '../redux/containers/TodoStarIcon'
+import TodoStarIcon from '../redux/containers/TodoStarIcon';
 
 class TodoItem extends Component {
   state = {
     completed: this.props.todo.completed,
+    starred: this.props.todo.starred,
     editing: false,
   };
 
@@ -24,6 +25,12 @@ class TodoItem extends Component {
   handleDoubleClick = () => {
     this.setState({
       editing: true,
+    });
+  };
+
+  handleToggleItemStarState = (starred) => {
+    this.setState({
+      starred: starred,
     });
   };
 
@@ -54,12 +61,17 @@ class TodoItem extends Component {
                  defaultChecked={this.state.completed}
           />
           <label onDoubleClick={this.handleDoubleClick}>{this.props.todo.title}</label>
-          <TodoStarIcon todo={this.props.todo}/>
+          <TodoStarIcon todo={this.props.todo} toggleItemStarState={this.handleToggleItemStarState}/>
         </div>
       );
     }
     return (
-      <li className={classnames('todo', {'completed': this.state.completed}, {'editing': this.state.editing})}>
+      <li className={classnames(
+        'todo',
+        {'starred_todo': this.state.starred},
+        {'completed': this.state.completed},
+        {'editing': this.state.editing},
+      )}>
         {itemView}
       </li>
     );
