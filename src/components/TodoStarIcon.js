@@ -7,6 +7,11 @@ class TodoStarIcon extends Component {
   };
 
   onClickHandler = () => {
+    if (this.props.counterActiveStarred === 3) {
+      alert('Exceeded,max 3');
+      return;
+    }
+
     const newTodo = {...this.props.todo};
 
     newTodo.starred = +!this.props.todo.starred;
@@ -36,6 +41,7 @@ class TodoStarIcon extends Component {
 
 TodoStarIcon.propTypes = {
   todo: PropTypes.object.isRequired,
+  counterActiveStarred: PropTypes.number.isRequired,
   toggleItemStarState: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
 };

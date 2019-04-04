@@ -7,6 +7,10 @@ export const countActive = createSelector(getTodos, todos => {
   return todos.filter(todo => !todo.completed).length;
 });
 
+export const countActiveStarred = createSelector(getTodos, todos => {
+  return todos.filter(todo => !todo.completed && todo.starred).length;
+});
+
 export const countByFilterValue = createSelector(
   getTodos,
   (todos) => {
