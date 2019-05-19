@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class TodoTextInput extends Component {
-  state = {text: this.props.text || ''};
+  state = { text: this.props.text || "" };
 
-  handleChange = e => {
-    this.setState({text: e.target.value});
+  handleChange = (e) => {
+    this.setState({ text: e.target.value });
   };
 
   handleBlur = () => {
@@ -13,20 +13,21 @@ class TodoTextInput extends Component {
   };
 
   handleSubmit = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       this.props.handleInputFieldUpdate(this.state.text.trim());
     }
   };
 
   render() {
     return (
-      <input className="edit"
-             autoFocus={true}
-             type="text"
-             value={this.state.text}
-             onChange={this.handleChange}
-             onBlur={this.handleBlur}
-             onKeyDown={this.handleSubmit}
+      <input
+        className="edit"
+        autoFocus={true}
+        type="text"
+        value={this.state.text}
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
+        onKeyDown={this.handleSubmit}
       />
     );
   }
@@ -35,7 +36,7 @@ class TodoTextInput extends Component {
 TodoTextInput.propTypes = {
   handleInputFieldUpdate: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-  editing: PropTypes.bool.isRequired,
+  editing: PropTypes.bool.isRequired
 };
 
 export default TodoTextInput;
