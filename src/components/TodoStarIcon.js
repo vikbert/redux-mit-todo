@@ -1,5 +1,8 @@
 import React, {Component} from "react";
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import * as CounterSelector from '../redux/selectors/counterSelector';
+import {update} from "../redux/actions/todoActions";
 
 class TodoStarIcon extends Component {
   state = {
@@ -46,4 +49,12 @@ TodoStarIcon.propTypes = {
   updateTodo: PropTypes.func.isRequired,
 };
 
-export default TodoStarIcon;
+const mapStateToProps = (state) => ({
+  counterActiveStarred: CounterSelector.countActiveStarred(state),
+});
+
+const mapDispatchToProps = {
+  updateTodo: update,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoStarIcon);

@@ -1,8 +1,10 @@
 import React, {Component} from "react";
+import {connect} from 'react-redux';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import TodoTextInput from './TodoTextInput';
-import TodoStarIcon from '../redux/containers/TodoStarIcon';
+import {remove, update} from '../redux/actions/todoActions'
+import TodoStarIcon from "./TodoStarIcon";
 
 class TodoItem extends Component {
   state = {
@@ -84,4 +86,9 @@ TodoItem.propTypes = {
   deleteTodo: PropTypes.func.isRequired,
 };
 
-export default TodoItem;
+const mapDispatchToProps = {
+  updateTodo: update,
+  deleteTodo: remove,
+};
+
+export default connect(null, mapDispatchToProps)(TodoItem);

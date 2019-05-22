@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
+import {add} from '../redux/actions/todoActions'
 
 class TodoForm extends Component {
   state = {inputText: ''};
@@ -45,4 +47,4 @@ TodoForm.propTypes = {
   createTodo: PropTypes.func.isRequired,
 };
 
-export default TodoForm;
+export default connect(null, {createTodo: add})(TodoForm);

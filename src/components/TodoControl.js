@@ -1,6 +1,8 @@
 import React from "react";
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoFilterLink from '../components/TodoFilterLink';
+import {removeCompleted, updateVisibility} from "../redux/actions/todoActions";
 
 const TodoControl = ({visibility, filterCounter, updateVisibility, removeCompletedTodos}) => {
   const filters = ['all', 'active', 'completed'];
@@ -33,4 +35,14 @@ TodoControl.propTypes = {
   removeCompletedTodos: PropTypes.func.isRequired,
 };
 
-export default TodoControl;
+const mapStateToProps = (state) => ({
+  visibility: state.todoApp.visibility,
+  counterActive: 0,
+  filterCounter: 0,
+});
+
+const mapDispatchToProps = {
+  updateVisibility,
+  removeCompletedTodos: removeCompleted,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(TodoControl);
