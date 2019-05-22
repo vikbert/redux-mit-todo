@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoFilterLink from '../components/TodoFilterLink';
 import {removeCompleted, updateVisibility} from "../redux/actions/todoActions";
-import * as CounterSelector from '../redux/selectors/counterSelector'
+import * as CounterSelector from '../cache/selectors/counterSelector'
 
 const TodoControl = ({visibility, filterCounter, updateVisibility, removeCompletedTodos}) => {
   const filters = ['all', 'active', 'completed'];

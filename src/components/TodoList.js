@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as ListSelector from '../redux/selectors/listSelector';
+import * as ListSelector from '../cache/selectors/listSelector';
 import PropTypes from "prop-types";
 import TodoItem from "./TodoItem";
 

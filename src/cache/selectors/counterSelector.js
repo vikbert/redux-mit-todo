@@ -1,18 +1,14 @@
 import {createSelector} from 'reselect';
 import * as Filters from '../../constants/Filter';
 
-const getTodos = state => state.todoApp.todos;
+const _getTodos = state => state.todoApp.todos;
 
-export const countActive = createSelector(getTodos, todos => {
-  return todos.filter(todo => !todo.completed).length;
-});
-
-export const countActiveStarred = createSelector(getTodos, todos => {
+export const countActiveStarred = createSelector(_getTodos, todos => {
   return todos.filter(todo => !todo.completed && todo.starred).length;
 });
 
 export const countByFilterValue = createSelector(
-  getTodos,
+  _getTodos,
   (todos) => {
     let filterCounter = {};
     const filterValues = Object.values(Filters);

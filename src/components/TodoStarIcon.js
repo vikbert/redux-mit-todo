@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import * as CounterSelector from '../redux/selectors/counterSelector';
+import * as CounterSelector from '../cache/selectors/counterSelector';
 import {update} from "../redux/actions/todoActions";
 
 class TodoStarIcon extends Component {
