@@ -18,8 +18,8 @@
     "react-test-renderer": "^16.3.1"
   },
   "scripts": {
-    "startbak": "PORT=8080 react-scripts start",
-    "start": "npx react-scripts build && npx serve -l tcp://0.0.0.0:8080 -s build",
+    "start": "react-scripts start",
+    "build:serve": "npx react-scripts build && npx serve -l tcp://0.0.0.0:8080 -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
