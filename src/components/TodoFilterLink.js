@@ -5,7 +5,10 @@ const TodoFilterLink = ({visibility, filterValue, filterCounter, updateVisibilit
   const className = visibility === filterValue ? 'selected' : '';
 
   return (
-    <a href={'#/' + filterValue} className={className} onClick={() => updateVisibility(filterValue)}>
+    <a href={'#/' + filterValue}
+       className={className}
+       onClick={() => updateVisibility(filterValue)}
+    >
       {filterValue} ({filterCounter[filterValue]})
     </a>
   );
