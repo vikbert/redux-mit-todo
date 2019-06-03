@@ -1,42 +1,39 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
-class TodoTextInput extends Component {
-  state = { text: this.props.text || "" };
-
-  handleChange = (e) => {
-    this.setState({ text: e.target.value });
+const TodoTextInput = (props) => {
+  const [text, setText] = useState(props.text || '');
+  const handleChange = (e) => {
+    setText(e.target.value);
   };
 
-  handleBlur = () => {
-    this.props.handleInputFieldUpdate(this.state.text.trim());
+  const handleBlur = () => {
+    props.handleInputFieldUpdate(text.trim());
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     if (e.key === "Enter") {
-      this.props.handleInputFieldUpdate(this.state.text.trim());
+      props.handleInputFieldUpdate(text.trim());
     }
   };
 
-  render() {
-    return (
-      <input
-        className="edit"
-        autoFocus={true}
-        type="text"
-        value={this.state.text}
-        onChange={this.handleChange}
-        onBlur={this.handleBlur}
-        onKeyDown={this.handleSubmit}
-      />
-    );
-  }
-}
+  return (
+    <input
+      className="edit"
+      autoFocus={true}
+      type="text"
+      value={text}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      onKeyDown={handleSubmit}
+    />
+  );
+};
 
 TodoTextInput.propTypes = {
   handleInputFieldUpdate: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-  editing: PropTypes.bool.isRequired
+  editing: PropTypes.bool.isRequired,
 };
 
 export default TodoTextInput;

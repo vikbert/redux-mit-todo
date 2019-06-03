@@ -45,4 +45,5 @@ const mapDispatchToProps = {
   updateVisibility,
   removeCompletedTodos: removeCompleted,
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(TodoControl);

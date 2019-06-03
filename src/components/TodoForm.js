@@ -1,47 +1,45 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux'
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {add} from '../redux/actions/todoActions'
+import {add} from '../redux/actions/todoActions';
 
-class TodoForm extends Component {
-  state = {inputText: ''};
+const TodoForm = (props) => {
+  const [inputText, setInputText] = useState('');
 
-  handleChange = e => {
-    this.setState({inputText: e.target.value});
+  const handleChange = e => {
+    setInputText(e.target.value);
   };
 
-  handleKeyPress = e => {
+  const handleKeyPress = e => {
     if (e.key === 'Enter') {
-      const text = this.state.inputText.trim();
+      const text = inputText.trim();
       if (!text) {
         return;
       }
 
       const newTodo = {
         id: window.todoStorage.uid++,
-        title: this.state.inputText,
+        title: inputText,
         starred: 0,
         completed: false,
       };
 
-      this.props.createTodo(newTodo);
-      this.setState({inputText: ''});
+      props.createTodo(newTodo);
+      setInputText('');
     }
   };
 
-  render() {
-    return (
-      <div>
-        <h1>{"M I T Todo"}</h1>
-        <input className="new-todo" type="text" placeholder="What needs to be done?"
-               value={this.state.inputText}
-               onChange={this.handleChange}
-               onKeyPress={this.handleKeyPress}
-               autoFocus={true}/>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>{"M I T Todo"}</h1>
+      <input className="new-todo" type="text" placeholder="What needs to be done?"
+             value={inputText}
+             onChange={handleChange}
+             onKeyPress={handleKeyPress}
+             autoFocus={true}/>
+    </div>
+  );
+};
 
 TodoForm.propTypes = {
   createTodo: PropTypes.func.isRequired,
