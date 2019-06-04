@@ -9,7 +9,7 @@ import TodoControl from "./components/TodoControl";
 const App = () => {
   return (
     <div>
-      <GitHub/>
+      <GitHub gitUrl={'https://github.com/vikbert/redux-MIT-todo'}/>
       <section className="todoapp">
         <header className="header">
           <TodoForm/>

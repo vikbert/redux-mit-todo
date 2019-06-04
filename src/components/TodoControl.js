@@ -41,6 +41,7 @@ const mapStateToProps = (state) => ({
   filterCounter: CounterSelector.countByFilterValue(state),
 });
 
+// this definition will register the functions, most of them are able to dispatch an event.
 const mapDispatchToProps = {
   updateVisibility,
   removeCompletedTodos: removeCompleted,

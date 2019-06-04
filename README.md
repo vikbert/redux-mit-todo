@@ -22,11 +22,6 @@ possible. Keep this list separate from your general to-do list. Read more about 
 
 ![redux-concept](./public/screenshot_redux.png)
 
-
-## Traditional React Concept
-
-![react-concept](./public/screenshot_react_delegation.png)
-
 ## Project setup
 ```
 yarn install

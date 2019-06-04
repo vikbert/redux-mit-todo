@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const TodoTextInput = (props) => {
   const [text, setText] = useState(props.text || '');
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
