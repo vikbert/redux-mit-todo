@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "MitTodo",
+    "short_name": "MitTodo",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
