@@ -1,5 +1,4 @@
-// const URL_TODOS = 'http://vikbert-software.de/api/todos.php';
-const URL_TODOS = 'http://localhost:8000/todos.php';
+const URL_TODOS = 'http://vikbert-software.de/api/todos.php';
 export const saveTodos = (todos = []) => {
     fetch(URL_TODOS, {
         method: 'POST',
