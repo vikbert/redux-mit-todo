@@ -24,7 +24,7 @@ const deleteTodo = (state, action) => {
 export default function (state = initialState, action) {
   switch (action.type) {
     case types.FETCH_TODOS:
-      return {...state, todos: state.todos};
+      return {...state, todos: action.todos};
     case types.CREATE_TODO:
       return {...state, todos: [action.todo, ...state.todos], todosChanged: true};
     case types.UPDATE_TODO:
