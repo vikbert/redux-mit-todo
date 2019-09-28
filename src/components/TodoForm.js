@@ -1,48 +1,50 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useDispatch} from 'react-redux';
 import {add} from '../redux/actions/todoActions';
+import uuid from 'uuid';
 
-const TodoForm = (props) => {
-  const [inputText, setInputText] = useState('');
+const TodoForm = () => {
+    const dispatch = useDispatch();
+    const [todoTitle, setTodoTitle] = useState('');
 
-  const handleChange = e => {
-    setInputText(e.target.value);
-  };
+    const handleChange = e => {
+        setTodoTitle(e.target.value.trimLeft());
+    };
 
-  const handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      const text = inputText.trim();
-      if (!text) {
-        return;
-      }
+    const handleOnKeyPress = e => {
+        if (todoTitle.length === 0) {
+            return;
+        }
 
-      const newTodo = {
-        id: window.todoStorage.uid++,
-        title: inputText,
-        starred: 0,
-        completed: false,
-      };
+        if (e.key === 'Enter') {
+            addTodoOnKeyEnter();
+        }
+    };
 
-      props.createTodo(newTodo);
-      setInputText('');
-    }
-  };
+    const addTodoOnKeyEnter = () => {
+        const newTodo = {
+            id: uuid.v4(),
+            title: todoTitle,
+            starred: 0,
+            completed: false,
+        };
 
-  return (
-    <div>
-      <h1>{"M I T Todo"}</h1>
-      <input className="new-todo" type="text" placeholder="What needs to be done?"
-             value={inputText}
-             onChange={handleChange}
-             onKeyPress={handleKeyPress}
-             autoFocus={true}/>
-    </div>
-  );
+        dispatch(add(newTodo));
+        setTodoTitle('');
+    };
+
+    return (
+        <>
+            <h1>{"M I T Todo"}</h1>
+            <input className="new-todo"
+                   type="text"
+                   placeholder="What needs to be done?"
+                   value={todoTitle}
+                   onChange={handleChange}
+                   onKeyPress={handleOnKeyPress}
+                   autoFocus={true}/>
+        </>
+    );
 };
 
-TodoForm.propTypes = {
-  createTodo: PropTypes.func.isRequired,
-};
-
-export default connect(null, {createTodo: add})(TodoForm);
+export default TodoForm;
